@@ -1,0 +1,1 @@
+Como mencionado, criei um novo portfólio com referências mais modernas, refazendo o projeto anterior do zero. Assim como no anterior, o objetivo não é demonstrar HTML básico, mas sim mostrar minha evolução em CSS e JavaScript. O projeto é responsivo e conta com animações sutis para combinar com a vibe cyberpunk que quis transmitir, estética que me identifica bastante.
