@@ -1,4 +1,24 @@
 const navbar = document.getElementById('navbar');
+const verMaisBtn = document.getElementById('verMaisBtn');
+const conteudoExtra = document.getElementById('conteudoExtra');
+
+document.documentElement.classList.add('locked');
+document.body.classList.add('locked');
+
+function revealConteudoExtra() {
+  conteudoExtra.classList.add('visible');
+  document.documentElement.classList.remove('locked');
+  document.body.classList.remove('locked');
+  verMaisBtn.style.display = 'none';
+}
+
+verMaisBtn.addEventListener('click', () => {
+  revealConteudoExtra();
+  const navHeight = navbar.offsetHeight;
+  const target = document.getElementById('sobre');
+  const targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+  window.scrollTo({ top: targetTop, behavior: 'smooth' });
+});
 
 window.addEventListener('scroll', () => {
   if (window.scrollY > 50) {
@@ -69,6 +89,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(anchor.getAttribute('href'));
     if (target) {
       e.preventDefault();
+      if (conteudoExtra.contains(target) && !conteudoExtra.classList.contains('visible')) {
+        revealConteudoExtra();
+      }
       const navHeight = navbar.offsetHeight;
       const targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
       window.scrollTo({ top: targetTop, behavior: 'smooth' });
@@ -86,7 +109,7 @@ const sectionObserver = new IntersectionObserver((entries) => {
         link.style.color = '';
       });
       const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-      if (active) active.style.color = '#e03131';
+      if (active) active.style.color = '#a855f7';
     }
   });
 }, {
